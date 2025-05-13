@@ -10,8 +10,16 @@ AMQP is short for Advanced Message Queueing Protocol. It is an open standard app
   - `localhost` refers to my local machine
   - `5672` is the default port used by RabbitMQ connections
 
+#### Sending and Receiving Messages
+
 ![image](https://github.com/user-attachments/assets/268aac37-77a6-4b55-9f06-fa3a8416b977)
 ![image](https://github.com/user-attachments/assets/d073e242-7677-45d9-9152-9437a2c1dc98)
 ![image](https://github.com/user-attachments/assets/53adb56d-995e-4655-8f22-8b50bc9420c6)
 
 The publisher is publishing the messages and the subscriber is listening to them. The RabbitMQ server is doing its job of receiving the messages from the publisher and delivering them to the subscriber.
+
+#### Slow Subscriber Simulation
+
+![image](https://github.com/user-attachments/assets/e10fbce2-6e13-4137-baf7-d9e0253ec07a)
+
+I ran the publisher program 10 times. This means there should be 50 messages. However, since it takes time for RabbitMQ to receive every messages and display them to the dashboard, some messages has been processed by the time the message count is displayed. That's why it showed message count of a little under 40.
