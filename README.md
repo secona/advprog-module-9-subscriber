@@ -28,3 +28,21 @@ I ran the publisher program 10 times. This means there should be 50 messages. Ho
 ![image](https://github.com/user-attachments/assets/23988da6-7c0e-48ea-8114-7df41b1665fc)
 
 I ran four subscriber and executed the publisher program 10 times. Compared to having only one subscriber, the message count decreased much faster. This is because the load was disributed across four subscribers instead of just one, reducing the workload of each individual subscriber. While one subscriber is busy processing a message, others can handle incoming messages simultaneously, reducing bottlenecks and improving overall throughput.
+
+---
+
+#### What can be improved?
+
+Publisher
+
+- Handle Errors: Handle `publish_event` results. Instead of casting them to `_`, log the errors or handle them accordingly.
+- Avoid Hardcoding: Use environment variables, e.g. `std::env::var("AMQP_URL")`, instead of hardcoded URLs.
+- Batch Messages: Use a loop to avoid repetition when publishing multiple messages.
+- Use Logging: Replace `println!` with propper logging.
+
+Subscriber
+
+- Add Concurrency: Use threads to handle messages in parallel.
+- Avoid Hardcoding: Use environment variables, e.g. `std::env::var("AMQP_URL")`, instead of hardcoded URLs.
+- Handle Errors: Handle `listen` results. Instead of casting them to `_`, log the errors or handle them accordingly.
+- Use Logging: Replace `println!` with propper logging.
